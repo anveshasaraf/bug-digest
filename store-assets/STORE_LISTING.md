@@ -90,5 +90,6 @@ The dashboard asks you to declare what user data categories the extension "colle
 - `screenshots/shot-3-clean-state.png`: honest empty/clean state
 - `screenshots/shot-4-onboarding.png`: onboarding page
 - `promo-tile-440x280.png`: small promo tile
+- `marquee-1400x560.png`: marquee promo tile (optional, only used if Google features the listing)
 
 All screenshots are real captures (via Playwright against `test/fixture/index.html`), not mockups.

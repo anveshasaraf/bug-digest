@@ -152,7 +152,7 @@ describe('digestToMarkdown', () => {
       ],
     });
     const md = digestToMarkdown(digest, testRules);
-    expect(md).toContain('Uncaught error in your code — details below');
+    expect(md).toContain('Uncaught error in your code, details below');
   });
 
   it('includes noise count and samples without hiding them', () => {

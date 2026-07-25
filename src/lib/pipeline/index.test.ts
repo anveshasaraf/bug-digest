@@ -12,10 +12,10 @@ const USER_AGENT = 'test-agent/1.0';
  * console.error it caused), and severity ordering (four incidents that
  * must NOT come out in chronological order). Gaps between incident groups
  * are deliberately > 1500ms; gaps within a group are deliberately <= 1500ms
- * — see correlate.ts for the window this depends on.
+ *, see correlate.ts for the window this depends on.
  */
 const FIXTURE_EVENTS: RawEvent[] = [
-  // Incident D (cross-origin failure, warning) — listed first to prove
+  // Incident D (cross-origin failure, warning), listed first to prove
   // output order isn't just input order.
   { kind: 'network', method: 'GET', url: 'https://cdn.example.com/thing.js', status: 404, durationMs: 8, ts: 15000 },
 
@@ -24,10 +24,10 @@ const FIXTURE_EVENTS: RawEvent[] = [
   { kind: 'network', method: 'GET', url: '/favicon.ico', status: 404, durationMs: 3, ts: 150 },
   { kind: 'console', level: 'error', message: 'Unchecked runtime.lastError: some noise', ts: 200 },
 
-  // Incident A (isolated console.warn, info) — lowest severity.
+  // Incident A (isolated console.warn, info), lowest severity.
   { kind: 'console', level: 'warn', message: 'Deprecated API used', ts: 0 },
 
-  // Incident C (uncaught exception, duplicated, critical) — highest severity despite firing after B.
+  // Incident C (uncaught exception, duplicated, critical), highest severity despite firing after B.
   { kind: 'exception', message: "Cannot read properties of undefined (reading 'qty')", ts: 10000 },
   { kind: 'exception', message: "Cannot read properties of undefined (reading 'qty')", ts: 10100 },
 

@@ -14,7 +14,7 @@ export interface DedupedEvent {
 
 /**
  * Identity key for collapsing duplicates. Two events are "the same message"
- * if this key matches — duration and (for exceptions) column number are
+ * if this key matches, duration and (for exceptions) column number are
  * deliberately excluded since they vary run-to-run for what a human would
  * call the same error.
  */

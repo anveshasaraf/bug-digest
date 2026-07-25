@@ -147,7 +147,7 @@ chrome.runtime.onInstalled.addListener((details) => {
 // injects both capture scripts as genuine, synchronous document_start
 // content scripts. CRXJS's manifest-declared content scripts go through an
 // async dynamic-import loader that loses the race against the page's own
-// document_start scripts — see scripts/build-capture.mjs for the full story.
+// document_start scripts, see scripts/build-capture.mjs for the full story.
 const MAIN_WORLD_SCRIPT_ID = 'bug-digest-main-world';
 const CONTENT_SCRIPT_ID = 'bug-digest-content';
 

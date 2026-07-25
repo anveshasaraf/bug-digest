@@ -12,7 +12,7 @@ function emptyDigest(): Digest {
 
 async function getActiveTab(): Promise<chrome.tabs.Tab | undefined> {
   // Playwright/automated testing can't trigger the native toolbar popup (it's
-  // outside page content), so it opens this page directly as a tab — which
+  // outside page content), so it opens this page directly as a tab, which
   // would otherwise make chrome.tabs.query({active:true}) resolve to itself
   // instead of the tab under test. This override only ever fires when the
   // popup is opened with an explicit ?tabId=, which never happens in real

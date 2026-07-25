@@ -1,6 +1,6 @@
 /**
  * Pure redaction helpers. The network RawEvent shape only ever stores
- * method/url/status/durationMs (no headers, no bodies — see src/lib/types.ts),
+ * method/url/status/durationMs (no headers, no bodies, see src/lib/types.ts),
  * so the one place secrets can leak into a captured event is the URL itself
  * (query params, e.g. ?token=... or ?api_key=...). Redact those before the
  * event is ever posted out of the main world.

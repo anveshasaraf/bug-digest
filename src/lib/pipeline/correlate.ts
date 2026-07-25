@@ -9,7 +9,7 @@ const CORRELATION_WINDOW_MS = 1500;
  * Groups deduped events into incidents by chronological proximity: sort by
  * first occurrence, then start a new incident whenever the gap since the
  * previous event's last occurrence exceeds the correlation window. Chaining
- * is transitive — if A and B are within the window, and B and C are too,
+ * is transitive, if A and B are within the window, and B and C are too,
  * all three land in one incident even if A and C alone would not have
  * qualified. This is a deliberately simple heuristic (time proximity only,
  * not kind-pair matching) traded for determinism and testability; the

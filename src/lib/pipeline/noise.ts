@@ -5,7 +5,7 @@ import type { DedupedEvent } from './dedupe';
  * Known-meaningless entries, matched against the underlying RawEvent so the
  * table stays extendable without touching the filtering logic. Each pattern
  * only tests fields our capture layer actually produces (see main-world.ts)
- * — e.g. we never get the browser's own "net::ERR_BLOCKED_BY_CLIENT" string
+ *, e.g. we never get the browser's own "net::ERR_BLOCKED_BY_CLIENT" string
  * for fetch/XHR failures (both surface as a generic TypeError), so that
  * pattern matches on message text for the cases where it does show up
  * (a caught error re-logged verbatim) rather than pretending we can detect

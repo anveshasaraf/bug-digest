@@ -4,11 +4,11 @@ import pkg from './package.json' with { type: 'json' };
 export default defineManifest({
   manifest_version: 3,
   name: 'Bug Digest',
-  // Chrome Web Store hard-caps manifest description at 132 characters — the
+  // Chrome Web Store hard-caps manifest description at 132 characters; the
   // full pitch lives in store-assets/STORE_LISTING.md's "detailed
   // description" instead, which has no such limit.
   description:
-    'Turns console errors and failed requests into a ranked, plain-English digest — one-click markdown export for AI. 100% local.',
+    'Turns console errors and failed requests into a ranked, plain-English digest, one-click markdown export for AI. 100% local.',
   version: pkg.version,
   icons: {
     16: 'icons/icon-16.png',
@@ -31,7 +31,7 @@ export default defineManifest({
   host_permissions: ['<all_urls>'],
   // No static content_scripts entry: CRXJS wraps manifest-declared content
   // scripts in an async dynamic-import loader (needed for HMR), and that
-  // loader loses the race against the page's own document_start scripts —
+  // loader loses the race against the page's own document_start scripts,
   // fatal for a script whose entire job is installing hooks before the page
   // runs (see scripts/build-capture.mjs). Both capture scripts are instead
   // registered natively via chrome.scripting.registerContentScripts in

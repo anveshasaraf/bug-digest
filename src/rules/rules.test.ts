@@ -22,7 +22,7 @@ function network(status: number | null): RawEvent {
 
 /**
  * One canonical incident per rule, crafted so it matches ONLY that rule
- * against the real table — this both proves the rule fires on realistic
+ * against the real table, this both proves the rule fires on realistic
  * input and, since matchRules takes the first match, proves no earlier
  * rule shadows it.
  */

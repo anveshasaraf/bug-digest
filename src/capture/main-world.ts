@@ -1,5 +1,5 @@
 /**
- * Runs in the page's MAIN world (see manifest.config.ts) — the only place
+ * Runs in the page's MAIN world (see manifest.config.ts), the only place
  * that can see the page's own console/fetch/XHR/error globals directly.
  * Every wrapped API calls straight through to the original and returns/throws
  * exactly what the original would have; this script only ever observes.

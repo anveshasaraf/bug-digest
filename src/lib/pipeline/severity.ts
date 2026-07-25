@@ -10,13 +10,13 @@ import type { RawEvent, Severity } from '../types';
  *
  * Unhandled rejections are grouped with uncaught exceptions: both are
  * uncaught runtime errors, just delivered through a different browser
- * mechanism — treating them differently would be an arbitrary distinction.
+ * mechanism, treating them differently would be an arbitrary distinction.
  */
 export type Rank = 1 | 2 | 3 | 4 | 5;
 
 /**
  * Resolves against pageUrl as the base, since main-world.ts records fetch/XHR
- * URLs exactly as the page called them — a same-origin call like
+ * URLs exactly as the page called them, a same-origin call like
  * fetch('/api/orders') is captured as the literal relative string, not an
  * absolute URL.
  */

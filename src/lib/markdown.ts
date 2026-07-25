@@ -33,7 +33,7 @@ function eventStack(event: RawEvent): string | undefined {
 
 function incidentSection(incident: Incident, index: number, rules: Rule[]): string {
   const rule = incident.ruleId ? rules.find((r) => r.id === incident.ruleId) : undefined;
-  const title = rule?.titlePlain ?? 'Uncaught error in your code — details below';
+  const title = rule?.titlePlain ?? 'Uncaught error in your code, details below';
   const lines: string[] = [];
 
   lines.push(
@@ -63,7 +63,7 @@ function incidentSection(incident: Incident, index: number, rules: Rule[]): stri
 /**
  * Serializes the full technical digest as markdown for pasting into an LLM.
  * Every RawEvent field that exists is represented verbatim somewhere in the
- * output — this is the "copy for AI" button's entire product surface, so
+ * output: this is the "copy for AI" button's entire product surface, so
  * nothing gets summarized away.
  */
 export function digestToMarkdown(digest: Digest, rules: Rule[] = defaultRules): string {

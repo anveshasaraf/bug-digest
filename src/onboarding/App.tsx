@@ -52,7 +52,7 @@ export function App() {
         <h1 className="text-2xl font-semibold">Welcome to bug-digest</h1>
         <p className="mt-2 text-neutral-600 dark:text-neutral-400 max-w-lg mx-auto">
           It watches the console and network for the page you're testing, and turns the noise into a short,
-          plain-English list of what's actually broken — entirely on your machine.
+          plain-English list of what's actually broken. Entirely on your machine.
         </p>
       </header>
 
@@ -62,7 +62,7 @@ export function App() {
             <ToolbarBadgeMockup />
           </Mockup>
 
-          <Mockup label="Each row in the popup is one incident — a plain-English title, how many times it happened, and when. Click a card to expand it.">
+          <Mockup label="Each row in the popup is one incident: a plain-English title, how many times it happened, and when. Click a card to expand it.">
             <IncidentCardMockup />
           </Mockup>
         </div>
@@ -80,7 +80,7 @@ export function App() {
               <div className="mx-auto w-10 h-10 rounded-full bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 flex items-center justify-center font-semibold">
                 2
               </div>
-              <p className="text-sm">Click <span className="font-medium">Copy for AI</span> — this copies the full technical digest as markdown</p>
+              <p className="text-sm">Click <span className="font-medium">Copy for AI</span>: this copies the full technical digest as markdown</p>
             </div>
             <div className="space-y-2">
               <div className="mx-auto w-10 h-10 rounded-full bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 flex items-center justify-center font-semibold">
@@ -98,34 +98,34 @@ export function App() {
         </summary>
         <div className="mt-3 text-sm text-neutral-600 dark:text-neutral-400 space-y-2 max-w-xl">
           <p>
-            Everything is deterministic — there are no LLM calls, no network requests, and no accounts anywhere in
+            Everything is deterministic: there are no LLM calls, no network requests, and no accounts anywhere in
             this extension. The "AI feature" is just that the markdown export is good input for whatever AI tool you
             already use.
           </p>
           <p>Captured events go through five pure, unit-tested pipeline stages, in order:</p>
           <ol className="list-decimal list-inside space-y-0.5">
             <li>
-              <strong>Dedupe</strong> — collapse identical messages into one entry with a count.
+              <strong>Dedupe</strong>: collapse identical messages into one entry with a count.
             </li>
             <li>
-              <strong>Noise filter</strong> — drop known-meaningless entries (favicon 404s, extension chatter), but
+              <strong>Noise filter</strong>: drop known-meaningless entries (favicon 404s, extension chatter), but
               keep them countable, never silently.
             </li>
             <li>
-              <strong>Severity ranking</strong> — uncaught exception &gt; same-origin failed request &gt;
+              <strong>Severity ranking</strong>: uncaught exception &gt; same-origin failed request &gt;
               console.error &gt; third-party failed request &gt; console.warn.
             </li>
             <li>
-              <strong>Incident correlation</strong> — group events that happen within ~1.5s into one incident.
+              <strong>Incident correlation</strong>: group events that happen within ~1.5s into one incident.
             </li>
             <li>
-              <strong>Rule matching</strong> — match each incident against a community-editable rules table for a
+              <strong>Rule matching</strong>: match each incident against a community-editable rules table for a
               plain-English title, explanation, and fixes.
             </li>
           </ol>
           <p>
             Want to add a rule for something not covered yet? See{' '}
-            <code className="bg-neutral-100 dark:bg-neutral-900 px-1 rounded">CONTRIBUTING.md</code> in the repo — a
+            <code className="bg-neutral-100 dark:bg-neutral-900 px-1 rounded">CONTRIBUTING.md</code> in the repo; a
             rule is a plain object with a match function, no engine code required.
           </p>
         </div>

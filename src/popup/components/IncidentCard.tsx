@@ -73,7 +73,7 @@ export function IncidentCard({ incident }: { incident: Incident }) {
               )}
             </div>
           ) : (
-            <p className="text-neutral-500 italic">No matching rule — showing raw detail below.</p>
+            <p className="text-neutral-500 italic">No matching rule: showing raw detail below.</p>
           )}
 
           <div>

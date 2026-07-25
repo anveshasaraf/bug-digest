@@ -10,7 +10,7 @@ const dist = path.join(root, 'dist');
 const releaseDir = path.join(root, 'release');
 
 if (!existsSync(dist)) {
-  console.error('dist/ not found — run `npm run build` first.');
+  console.error('dist/ not found, run `npm run build` first.');
   process.exit(1);
 }
 

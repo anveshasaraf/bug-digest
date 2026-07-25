@@ -4,8 +4,11 @@ import pkg from './package.json' with { type: 'json' };
 export default defineManifest({
   manifest_version: 3,
   name: 'Bug Digest',
+  // Chrome Web Store hard-caps manifest description at 132 characters — the
+  // full pitch lives in store-assets/STORE_LISTING.md's "detailed
+  // description" instead, which has no such limit.
   description:
-    'Deterministic, local-only error triage for web app developers. Collects console errors, uncaught exceptions, and failed network requests, then synthesizes a ranked, plain-English digest with a one-click LLM-ready markdown export. Zero network egress, zero accounts, zero analytics.',
+    'Turns console errors and failed requests into a ranked, plain-English digest — one-click markdown export for AI. 100% local.',
   version: pkg.version,
   icons: {
     16: 'icons/icon-16.png',

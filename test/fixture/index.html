@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>bug-digest fixture</title>
+    <style>
+      body { font-family: system-ui, sans-serif; max-width: 640px; margin: 3rem auto; line-height: 1.5; }
+      button { display: block; margin: 0.5rem 0; padding: 0.5rem 1rem; }
+    </style>
+  </head>
+  <body>
+    <h1>bug-digest capture fixture</h1>
+    <p>
+      Deterministically fires one of each event kind the capture layer should
+      observe. Open this page with the extension loaded, then either click the
+      buttons below or add <code>?auto=1</code> to the URL to fire all five on
+      load.
+    </p>
+
+    <button id="btn-console-error">Fire console.error</button>
+    <button id="btn-exception">Fire uncaught exception</button>
+    <button id="btn-rejection">Fire unhandled rejection</button>
+    <button id="btn-fetch">Fire failed fetch (404)</button>
+    <button id="btn-xhr">Fire failed XHR (404)</button>
+
+    <p id="status"></p>
+
+    <script>
+      function fireConsoleError() {
+        console.error('[fixture] scripted console.error', { code: 'FIXTURE_ERROR' });
+      }
+
+      function fireException() {
+        // setTimeout so this is a genuine uncaught exception, not one a
+        // surrounding try/catch on this handler would swallow.
+        setTimeout(() => {
+          throw new Error('[fixture] scripted uncaught exception');
+        }, 0);
+      }
+
+      function fireRejection() {
+        Promise.reject(new Error('[fixture] scripted unhandled rejection'));
+      }
+
+      function fireFailedFetch() {
+        fetch('/this-route-does-not-exist-404').catch(() => {
+          // The capture layer records the failure itself; nothing to do here.
+        });
+      }
+
+      function fireFailedXhr() {
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET', '/this-route-does-not-exist-404-xhr');
+        xhr.send();
+      }
+
+      document.getElementById('btn-console-error').addEventListener('click', fireConsoleError);
+      document.getElementById('btn-exception').addEventListener('click', fireException);
+      document.getElementById('btn-rejection').addEventListener('click', fireRejection);
+      document.getElementById('btn-fetch').addEventListener('click', fireFailedFetch);
+      document.getElementById('btn-xhr').addEventListener('click', fireFailedXhr);
+
+      if (new URLSearchParams(location.search).get('auto') === '1') {
+        document.getElementById('status').textContent = 'Auto-firing all five scripted events...';
+        fireConsoleError();
+        fireException();
+        fireRejection();
+        fireFailedFetch();
+        fireFailedXhr();
+      }
+    </script>
+  </body>
+</html>

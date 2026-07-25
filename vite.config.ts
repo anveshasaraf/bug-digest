@@ -10,4 +10,14 @@ export default defineConfig({
     port: 5173,
     strictPort: true,
   },
+  build: {
+    rollupOptions: {
+      // Onboarding isn't referenced anywhere in manifest.json (it's opened
+      // dynamically via chrome.tabs.create on install, not declared as a
+      // popup/options page), so CRXJS won't discover it on its own.
+      input: {
+        onboarding: 'src/onboarding/index.html',
+      },
+    },
+  },
 });

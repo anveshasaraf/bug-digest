@@ -137,6 +137,12 @@ chrome.storage.onChanged.addListener((changes, area) => {
   }
 });
 
+chrome.runtime.onInstalled.addListener((details) => {
+  if (details.reason === 'install') {
+    void chrome.tabs.create({ url: chrome.runtime.getURL('src/onboarding/index.html') });
+  }
+});
+
 // Registered here (rather than declared in manifest.config.ts) so Chrome
 // injects both capture scripts as genuine, synchronous document_start
 // content scripts. CRXJS's manifest-declared content scripts go through an

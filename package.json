@@ -1,12 +1,14 @@
 {
   "name": "bug-digest",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.1.0",
+  "license": "MIT",
   "type": "module",
   "scripts": {
     "dev": "node scripts/build-capture.mjs && vite",
     "build": "node scripts/build-capture.mjs && tsc -b && vite build",
     "build:capture": "node scripts/build-capture.mjs",
+    "package": "npm run build && node scripts/package.mjs",
     "lint": "oxlint",
     "preview": "vite preview",
     "test": "vitest run"

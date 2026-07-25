@@ -7,8 +7,18 @@ export default defineManifest({
   description:
     'Deterministic, local-only error triage for web app developers. Collects console errors, uncaught exceptions, and failed network requests, then synthesizes a ranked, plain-English digest with a one-click LLM-ready markdown export. Zero network egress, zero accounts, zero analytics.',
   version: pkg.version,
+  icons: {
+    16: 'icons/icon-16.png',
+    48: 'icons/icon-48.png',
+    128: 'icons/icon-128.png',
+  },
   action: {
     default_popup: 'src/popup/index.html',
+    default_icon: {
+      16: 'icons/icon-16.png',
+      48: 'icons/icon-48.png',
+      128: 'icons/icon-128.png',
+    },
   },
   background: {
     service_worker: 'src/background/index.ts',

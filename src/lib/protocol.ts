@@ -24,10 +24,11 @@ export interface MainWorldPageInitMessage {
 
 export type MainWorldMessage = MainWorldEventMessage | MainWorldPageInitMessage;
 
-/** chrome.runtime message types sent from content.ts to the background worker. */
+/** chrome.runtime message types exchanged between content.ts, the popup, and the background worker. */
 export const RELAY_EVENT = 'bug-digest:relay-event' as const;
 export const RELAY_PAGE_INIT = 'bug-digest:relay-page-init' as const;
-export const GET_BUFFER = 'bug-digest:get-buffer' as const;
+export const GET_DIGEST = 'bug-digest:get-digest' as const;
+export const CLEAR_BUFFER = 'bug-digest:clear-buffer' as const;
 
 export interface RelayEventMessage {
   type: typeof RELAY_EVENT;
@@ -40,12 +41,18 @@ export interface RelayPageInitMessage {
   ts: number;
 }
 
-export interface GetBufferMessage {
-  type: typeof GET_BUFFER;
+/** Sent by the popup for a specific tab (a popup has no "current tab" of its own). */
+export interface GetDigestMessage {
+  type: typeof GET_DIGEST;
   tabId: number;
 }
 
-export type RuntimeMessage = RelayEventMessage | RelayPageInitMessage | GetBufferMessage;
+export interface ClearBufferMessage {
+  type: typeof CLEAR_BUFFER;
+  tabId: number;
+}
+
+export type RuntimeMessage = RelayEventMessage | RelayPageInitMessage | GetDigestMessage | ClearBufferMessage;
 
 function isFiniteNumber(v: unknown): v is number {
   return typeof v === 'number' && Number.isFinite(v);

@@ -77,7 +77,10 @@ https://github.com/anveshasaraf/bug-digest/blob/master/PRIVACY.md
 
 The dashboard asks you to declare what user data categories the extension "collects or uses," and to check three certification boxes. Based on what this extension actually does:
 
-- **Data categories to check:** "Website content" (it reads console messages and network activity on the page you're viewing). Everything else (PII, health, financial, auth info, location, etc.) should stay unchecked: the extension never accesses any of that.
+- **Data categories to check:**
+  - "Website content": console messages, exceptions, and stack traces are text originating from the page.
+  - "User activity": Google's own example under this category is "network monitoring," which is exactly what the `network` event kind does (watching fetch/XHR for failures).
+  - Everything else (PII, health, financial, authentication info, personal communications, location, web history) should stay unchecked: the `network` event never captures headers/cookies (see `src/lib/types.ts`), and the extension only holds the current tab's page in memory, cleared per tab, never a persisted browsing history.
 - **Certifications:** all three should be checked truthfully:
   - Does not sell or transfer user data to third parties outside approved use cases (true, there's no transfer of any kind, nothing leaves the device)
   - Does not use or transfer user data for purposes unrelated to the item's single purpose (true)
